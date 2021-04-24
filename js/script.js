@@ -129,8 +129,164 @@ while (s != '') {
 
     s = prompt('7. Введите любое число (выход из цикла - пустое значение)');
 
-    if (s != '') arr_s.push(s);
+    if (s == null) break;
+
+    if (isNaN(s)) {
+
+        if (s == '') break;
+
+        alert('Вы ввели не число, попробуйте еще раз!');
+
+    } else {
+
+        if (s != '') arr_s.push(s);
+        
+    }
 
 }
 
-console.log(arr_s);
+if (arr_s.length == 0) {
+
+    console.log('Вы не ввели ни одного числа и вышли из цикла. Массив пустой')
+
+} else {
+
+    console.log('Полученный массив:');
+    console.log(arr_s);
+
+    arr_s.sort(function(a, b) {
+        return a - b;
+    });
+
+    if (arr_s.length < 2) {
+
+        console.log('Тут нечего сортировать, вы ввели всего одно число');
+
+    } else {
+
+        console.log('Сортируем массив по возрастанию:');
+        console.log(arr_s);
+
+    }
+
+}
+
+
+// task 8 
+
+console.log('// Задание 8. Переверните массив [12, false, ‘Текст’, 4, 2, 5, 0] (выведите в обратном порядке), используя цикл while и метод reverse.');
+
+let arr_t = [12, false, 'Текст', 4, 2, 5, 0],
+    arr_trevers = [];
+
+console.log('С помощью цикла while:');
+
+i = arr_t.length - 1;
+
+while (i >= 0) {
+
+    arr_trevers.push(arr_t[i]);
+
+    i--;
+
+}
+
+console.log(arr_trevers);
+
+console.log('С помощью метода revers:');
+console.log(arr_t.reverse());
+
+
+// task 9
+
+console.log('// Задание 9. Напишите скрипт, считающий количество нулевых (пустых) элементов в заданном целочисленном массиве [5, 9, 21, , , 9, 78, , , , 6]');
+
+let arr_u = [5, 9, 21,,, 9, 78,,,, 6],
+    u_count = 0;
+
+for (i = 0; i < arr_u.length; i++) {
+
+    if (arr_u[i] == null) {
+        u_count++;
+    }
+
+}
+
+console.log(arr_u);
+console.log('Кол-во нулевых элементов = ' + u_count);
+
+
+// task 10
+
+console.log('// Задание 10. Найдите сумму элементов массива между двумя нулями (первым и последним нулями в массиве). Если двух нулей нет в массиве, то выведите ноль. В массиве может быть более 2х нулей. Пример массива: [48,9,0,4,21,2,1,0,8,84,76,8,4,13,2] или [1,8,0,13,76,8,7,0,22,0,2,3,2].')
+
+let x,
+    sum_x = 0,
+    arr_x = [48, 9, 0, 4, 0, 21, 2, 0, 1, 8, 84, 76, 8, 4, 13, 2];
+
+console.log('Исходный массив:');
+console.log(arr_x);
+
+i = arr_x.indexOf(0);
+j = arr_x.lastIndexOf(0);
+
+if (i == -1 || i == j) {
+
+    console.log('В массиве нет двух нулей')
+
+} else {
+
+    while (i < arr_x.lastIndexOf(0)) {
+
+        sum_x += arr_x[i];
+
+        i++;
+
+    }
+
+    console.log('Сумма всех элементов в массиве между нулями - ' + sum_x);
+    
+}
+
+
+// task 11
+
+console.log('// Задание 11. Нарисовать равнобедренный треугольник из символов ^. Высоту выбирает пользователь.');
+
+let z = prompt('Введите высоту треугольника: целое число > 0');
+
+if (isNaN(z) || z == '' || z <= 1) {
+        
+    alert('Вы ввели неправильно число');
+
+} else {
+
+    let space_z,
+        cap_z;
+
+    j = 0;
+
+    while (j < z) {
+
+        space_z = '';
+        cap_z = '';
+
+        for (i = 0; i < z - j; i++) {
+
+            space_z += ' ';
+
+        }
+    
+        for (i = 0; i < (2 * j + 1); i++) {
+
+            cap_z += '^';
+
+        }
+        
+        console.log(space_z + cap_z);
+
+        j++;
+
+    }
+    
+}
